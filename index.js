@@ -78,7 +78,7 @@ class Airplane {
  class Car {
    constructor(model, milesPerGallon){
     this.model = model;
-    this.milesPerGallon = milesPerGallon
+    this.milesPerGallon = milesPerGallon;
    this.tank= 0;
    this.odometer = 0;
    }
@@ -137,7 +137,7 @@ class Airplane {
   */
  class Instructor extends Lambdasian {
    constructor(props) {
-     super(attrs);
+     super(props);
      this.specialty = props.specialty;
      this.favLanguage = props.favLanguage;
      this.catchPhrase = props.catchPhrase;
@@ -146,7 +146,7 @@ class Airplane {
     return `Today we are learning about ${subject}`;
    }
    grade(student, subject) {
-     return `${student.name} receives a perfect score on {subject}`
+     return `${student.name} receives a perfect score on ${subject}`
    }
  }
 
@@ -167,7 +167,7 @@ class Airplane {
   */
  class Student extends Lambdasian {
    constructor(props) {
-      super(attrs);
+      super(props);
         this.previousBackground = props.previousBackground;
         this.className = props.className;
         this.favSubjects = props.favSubjects;
@@ -176,10 +176,10 @@ class Airplane {
       return `${this.favSubjects}`
     }
     PRAssignment(subject) {
-      return `${this.student.name} has submitted a PR for ${subject}`;
+      return `${this.name} has submitted a PR for ${subject}`;
     }
     sprintChallenge(subject) {
-      return `${this.student.name} has begun sprint challenge on ${subject}`;
+      return `${this.name} has begun sprint challenge on ${subject}`;
     }
  }
   
@@ -196,9 +196,20 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor {
+    constructor(props) {
+      super(props);
+      this.gradClassName = props.gradClassName;
+      this.favInstructor = props.favInstructor;
+    }     
+    standUp(channel) {
+      return `${this.name} announces to ${channel}, @channel standy times!`;
+    }
+    debugsCode(obj, subject) {
+      return `${this.name} debugs ${obj.name}'s code on ${subject}`;
+    }
  }
+
   /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
